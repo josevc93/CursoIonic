@@ -6,7 +6,7 @@ import {Component, Input} from '@angular/core';
 })
 export class FruitCardComponent {
 
-  @Input() text: string;
+  @Input() fruit: any;
 
 
   constructor() {
