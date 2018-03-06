@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content >
-  <fruit-card *ngFor="let fruit of fruits" [fruit]=fruit></fruit-card>
+  <fruit-card *ngFor="let fruit of fruits" [fruit]="fruit" (delete)="deleteFruit(i)"></fruit-card>
 </ion-content>
 <!-- Footer -->
 <ion-footer>

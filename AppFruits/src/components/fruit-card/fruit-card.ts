@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'fruit-card',
@@ -7,9 +7,14 @@ import {Component, Input} from '@angular/core';
 export class FruitCardComponent {
 
   @Input() fruit: any;
-
+  @Output() delete: EventEmitter<void>;
 
   constructor() {
+    this.delete = new EventEmitter<void>();
+  }
+
+  deletePressed() {
+    this.delete.emit();
   }
 
 }
