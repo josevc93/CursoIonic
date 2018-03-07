@@ -1,0 +1,15 @@
+<ion-card padding >
+  <ion-grid>
+    <ion-row>
+      <ion-col col-2>
+        <button ion-button icon-only class="square" color="primary"
+                (click)="btnPressed()">{{textBtn}}</button>
+      </ion-col>
+      <ion-col padding-vertical>Title</ion-col>
+    </ion-row>
+  </ion-grid>
+  <div [hidden]="!oculto" padding>
+    <ng-content></ng-content>
+  </div>
+
+</ion-card>

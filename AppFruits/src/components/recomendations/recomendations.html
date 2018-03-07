@@ -11,21 +11,16 @@
         </button>
       </ion-col>
       <ion-col>
-        <h1>{{fruit.name}}</h1>
+        <h1>{{recomendation.title}}</h1>
       </ion-col>
     </ion-row>
     <!-- Resto de información -->
-    <ion-row [hidden]="!showInfo">
-      <ion-col col-4>
-        <img class="image" src="assets/imgs/fruits/{{fruit.image}}">
+      <ion-col col-12 *ngIf="showInfo">
+        <p>{{recomendation.author}}</p>
       </ion-col>
-      <ion-col>
-        <p margin-bottom margin-top>{{fruit.description}}</p>
-        <a target="_blank" href="{{fruit.link}}" *ngIf="fruit.link">More info</a>
-        <button ion-button icon-only color="danger" (click)="deletePressed()">
-          <ion-icon name="trash"></ion-icon>
-        </button>
-        <button ion-button class="viewdetails" (click)="viewDetailsF($event)">
+      <ion-col col-12 *ngIf="showInfo">
+        <p margin-bottom margin-top>{{recomendation.content}}</p>
+        <button ion-button class="viewdetails" (click)="viewDetailsR($event)">
           VIEW DETAILS
         </button>
         <button ion-button icon-only color="success" (click)="megusta()">
@@ -35,6 +30,5 @@
           <ion-icon name="thumbs-down"></ion-icon> {{dislike}}
         </button>
       </ion-col>
-    </ion-row>
   </ion-grid>
 </ion-card>

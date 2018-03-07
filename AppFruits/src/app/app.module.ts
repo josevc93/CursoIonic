@@ -7,12 +7,16 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {FruitCardComponent} from "../components/fruit-card/fruit-card";
+import {RecomendationsComponent} from "../components/recomendations/recomendations";
+import {ExpandableContentComponent} from "../components/expandable-content/expandable-content";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    FruitCardComponent
+    FruitCardComponent,
+    RecomendationsComponent,
+    ExpandableContentComponent
   ],
   imports: [
     BrowserModule,

@@ -6,8 +6,18 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content >
-  <fruit-card *ngFor="let fruit of fruits" [fruit]="fruit" (delete)="deleteFruit(i)"></fruit-card>
+<ion-content>
+  <expandable-content>
+    Content
+  </expandable-content>
+  <!-- FRUTAS -->
+  <h1 margin-lef>Fruits</h1>
+  <fruit-card *ngFor="let fruit of fruits; let i= index;" [fruit]="fruit" (delete)="deleteFruit(i)" (viewDetails)="viewDetailsF(i)">
+  </fruit-card>
+  <!-- RECOMENDACIONES -->
+  <h1>Recommendations</h1>
+  <recomendations *ngFor="let recomendation of recomendations; let i= index;" [recomendation]="recomendation" (viewDetails)="viewDetailsR(i)">
+  </recomendations>
 </ion-content>
 <!-- Footer -->
 <ion-footer>
