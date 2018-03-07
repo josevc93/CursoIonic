@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Details</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  {{ item.title | uppercase }}
+  <ion-icon [name]="item.icon"></ion-icon>
+  <p>{{item.note}}</p>
+  <p>{{item.price | currencyFormat: '$'}}</p>
+</ion-content>
+
