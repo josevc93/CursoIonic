@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {FruitItems, FruitService} from "../../services/fruit";
-import {ListPage} from "../list/list";
 
 
 @Component({
