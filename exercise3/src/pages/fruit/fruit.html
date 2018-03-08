@@ -3,21 +3,36 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>{{name}}</ion-title>
+    <ion-title><traslate>{{name}}</traslate></ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+ <!-- <p>{{ 'fruitCost' | translate: {price: 4} }}</p>
+  <p>{{'usingPipe' | translate}}</p>
+  <traslate [params]="{price: 4}">fruitCost</traslate> <!-- traducido -->
+
+  <!-- LISTA -->
+  <button ion-button icon-only color="secondary" (click)="getFruits()" *ngIf="isLoading">
+    Reload
+  </button>
   <ion-list *ngIf="!selectedFruit">
     <button ion-item *ngFor="let fruit of fruits" (click)="goToDetails($event, fruit, fruit.name)">
       <p class="negrita">{{fruit.name}}</p>
       <p>{{fruit.description | lenghtFormat: 40}}</p>
     </button>
   </ion-list>
+  <!-- DETALLE -->
   <div *ngIf="selectedFruit" padding>
     <p class="negrita">{{selectedFruit.name}}</p>
     <img class="image" src="assets/imgs/fruits/{{selectedFruit.image}}">
     <p>{{selectedFruit.description}}</p>
     <p><a href="{{selectedFruit.link}}" target="_blank">More info</a></p>
+    <button ion-button icon-only color="success" (click)="like()">
+      <ion-icon name="thumbs-up"></ion-icon> {{likeVote}}
+    </button>
+    <button ion-button icon-only color="danger" (click)="dislike()">
+      <ion-icon name="thumbs-down"></ion-icon> {{dislikeVote}}
+    </button>
   </div>
 </ion-content>

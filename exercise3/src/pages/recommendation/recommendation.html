@@ -3,13 +3,15 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>{{name}}</ion-title>
+    <ion-title><traslate>{{name}}</traslate></ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
+  <button ion-button icon-only color="secondary" (click)="getRecommendations()" *ngIf="isLoading">
+    Reload
+  </button>
   <ion-list *ngIf="!selectedRecommendation">
     <button ion-item *ngFor="let recommendation of recommendations" (click)="goToDetails($event, recommendation, recommendation.title)">
       <p class="negrita">{{recommendation.title}}</p>

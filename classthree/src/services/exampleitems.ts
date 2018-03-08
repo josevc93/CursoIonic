@@ -35,6 +35,7 @@ export class ExampleItemsService {
     const itemsAvailables = new Subject<Exampleitems[]>();
     setTimeout(() => {
        itemsAvailables.next(items);
+       itemsAvailables.complete();
     }, 1500);
 
     return itemsAvailables;

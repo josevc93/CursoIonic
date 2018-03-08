@@ -7,9 +7,9 @@
 </ion-header>
 
 <ion-content>
-  <expandable-content>
+  <!-- <expandable-content>
     Content
-  </expandable-content>
+  </expandable-content> -->
   <!-- FRUTAS -->
   <h1 margin-lef>Fruits</h1>
   <fruit-card *ngFor="let fruit of fruits; let i= index;" [fruit]="fruit" (delete)="deleteFruit(i)" (viewDetails)="viewDetailsF(i)">

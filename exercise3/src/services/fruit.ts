@@ -1,5 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Subject} from "rxjs/Subject";
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs/Observable";
 
 export interface FruitItems{
     id: number,
@@ -13,10 +15,14 @@ export interface FruitItems{
 
 export class FruitService {
 
-    constructor(){
+    constructor(private http: HttpClient){
 
     }
 
+    getFruits(): Observable<FruitItems[]> {
+      return <Observable<FruitItems[]>> this.http.get('http://localhost:3000/fruits');
+    }
+/*
     getFruits(): Subject<FruitItems[]> {
         let fruits = [
             {
@@ -84,5 +90,5 @@ export class FruitService {
         }, 2000);
 
         return fruitsAvailables;
-    }
+    }*/
 }

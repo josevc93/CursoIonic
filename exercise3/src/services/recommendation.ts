@@ -1,5 +1,8 @@
 import {Injectable} from "@angular/core";
 import {Subject} from "rxjs/Subject";
+import {FruitItems} from "./fruit";
+import {Observable} from "rxjs/Observable";
+import {HttpClient} from "@angular/common/http";
 
 export interface RecommendationItem{
     id: number,
@@ -12,6 +15,14 @@ export interface RecommendationItem{
 
 export class RecommendationService{
 
+  constructor(private http: HttpClient){
+
+  }
+
+  getRecommendations(): Observable<RecommendationItem[]> {
+    return <Observable<RecommendationItem[]>> this.http.get('http://localhost:3000/recommendations');
+  }
+/*
     getRecommendations(): Subject<RecommendationItem[]> {
         let recommendations = [
             {
@@ -77,5 +88,5 @@ export class RecommendationService{
         }, 2000);
 
         return recommendationsAvailables;
-    }
+    }*/
 }
