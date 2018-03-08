@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list *ngIf="!selectedRecommendation">
+    <button ion-item *ngFor="let recommendation of recommendations" (click)="goToDetails($event, recommendation, recommendation.title)">
+      <p class="negrita">{{recommendation.title}}</p>
+      <p>{{recommendation.content | lenghtFormat: 50}}</p>
+    </button>
+  </ion-list>
+  <div *ngIf="selectedRecommendation" padding>
+    <p class="negrita">{{selectedRecommendation.title}}</p>
+    <p>{{selectedRecommendation.content}}</p>
+    <p class="cursiva">{{selectedRecommendation.author}}</p>
+  </div>
+</ion-content>

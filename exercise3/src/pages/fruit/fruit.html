@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list *ngIf="!selectedFruit">
+    <button ion-item *ngFor="let fruit of fruits" (click)="goToDetails($event, fruit, fruit.name)">
+      <p class="negrita">{{fruit.name}}</p>
+      <p>{{fruit.description | lenghtFormat: 40}}</p>
+    </button>
+  </ion-list>
+  <div *ngIf="selectedFruit" padding>
+    <p class="negrita">{{selectedFruit.name}}</p>
+    <img class="image" src="assets/imgs/fruits/{{selectedFruit.image}}">
+    <p>{{selectedFruit.description}}</p>
+    <p><a href="{{selectedFruit.link}}" target="_blank">More info</a></p>
+  </div>
+</ion-content>
