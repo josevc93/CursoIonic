@@ -1,26 +1,28 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title><traslate>{{name}}</traslate></ion-title>
-  </ion-navbar>
-
+  <common-navbar [name]="name"></common-navbar>
 </ion-header>
 
 <ion-content padding>
-  <button ion-button icon-only color="secondary" (click)="getRecommendations()" *ngIf="isLoading">
-    Reload
-  </button>
+  <!-- LISTA -->
+  <div text-center *ngIf="loading">
+    <ion-spinner></ion-spinner>
+  </div>
+  <div text-center>
+    <button ion-button icon-only color="secondary" (click)="getRecommendations()" *ngIf="errorLoading">
+      Reload
+    </button>
+  </div>
   <ion-list *ngIf="!selectedRecommendation">
     <button ion-item *ngFor="let recommendation of recommendations" (click)="goToDetails($event, recommendation, recommendation.title)">
       <p class="negrita">{{recommendation.title}}</p>
       <p>{{recommendation.content | lenghtFormat: 50}}</p>
     </button>
   </ion-list>
+  <!-- DETALLE -->
   <div *ngIf="selectedRecommendation" padding>
     <p class="negrita">{{selectedRecommendation.title}}</p>
     <p>{{selectedRecommendation.content}}</p>
     <p class="cursiva">{{selectedRecommendation.author}}</p>
+    <vote></vote>
   </div>
 </ion-content>

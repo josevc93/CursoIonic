@@ -12,9 +12,11 @@ export class FruitPage implements OnInit{
   fruits: FruitItems[];
   name: string;
   selectedFruit: FruitItems;
-  isLoading: boolean;
+  errorLoading: boolean;
+  loading: boolean;
   likeVote: number;
   dislikeVote: number;
+
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -30,19 +32,21 @@ export class FruitPage implements OnInit{
 
       if (!this.name) {
           this.name = "Fruits List";
+          this.getFruits();
       }
-
-      this.getFruits();
   }
 
   getFruits() {
-    this.isLoading = false;
+    this.loading = true;
+    this.errorLoading = false;
     this.fruitService.getFruits()
       .subscribe((items: FruitItems[])=>{
         this.fruits = items;
+        this.loading = false;
       }, (error: HttpErrorResponse) => {
         console.log('Oh! Algo fue mal.');
-        this.isLoading = true;
+        this.errorLoading = true;
+        this.loading = false;
       });
   }
 
@@ -53,22 +57,10 @@ export class FruitPage implements OnInit{
         });
     }
 
-    like(){
-      this.likeVote += 1;
-      this.showAlert(true);
-    }
-
-    dislike(){
-      this.dislikeVote += 1;
-      this.showAlert(false);
-    }
-
-    showAlert(like: boolean){
-      let vote = like ? 'me gusta' : 'no me gusta';
-
+    showAlert(text: Event){
       let alert = this.alertCtrl.create({
         title: this.selectedFruit.name,
-        subTitle: 'Has votado ' + vote,
+        subTitle: 'Has votado ' + text + '.',
         buttons: ['Dismiss']
       });
       alert.present();

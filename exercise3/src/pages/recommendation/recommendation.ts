@@ -12,7 +12,8 @@ export class RecommendationPage implements OnInit{
     recommendations: RecommendationItem[];
     name: string;
     selectedRecommendation: RecommendationItem;
-    isLoading: boolean;
+    errorLoading: boolean;
+    loading: boolean;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, private recommendationService: RecommendationService) {
     }
@@ -22,19 +23,21 @@ export class RecommendationPage implements OnInit{
         this.name = this.navParams.get('name');
         if (!this.name) {
             this.name = "Recommendations List";
+            this.getRecommendations();
         }
-
-      this.getRecommendations();
     }
 
   getRecommendations(){
-    this.isLoading = false;
+    this.loading = true;
+    this.errorLoading = false;
     this.recommendationService.getRecommendations()
       .subscribe((items: RecommendationItem[])=>{
         this.recommendations = items;
+        this.loading = false;
       }, (error: HttpErrorResponse) => {
         console.log('Oh! Algo fue mal.');
-        this.isLoading = true;
+        this.errorLoading = true;
+        this.loading = false;
       });
   }
 

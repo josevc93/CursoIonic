@@ -15,6 +15,8 @@ import {FruitPage} from "../pages/fruit/fruit";
 import {RecommendationPage} from "../pages/recommendation/recommendation";
 import {lenghtFormat} from "../pipes/lenghtFormat";
 import {TraslateComponent} from "../components/traslate/traslate";
+import {VoteComponent} from "../components/vote/vote";
+import {CommonNavbarComponent} from "../components/common-navbar/common-navbar";
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
@@ -26,7 +28,9 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     FruitPage,
     RecommendationPage,
     lenghtFormat,
-    TraslateComponent
+    TraslateComponent,
+    VoteComponent,
+    CommonNavbarComponent
   ],
   imports: [
     BrowserModule,
