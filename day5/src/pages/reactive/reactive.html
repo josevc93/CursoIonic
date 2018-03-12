@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Reactive Form
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h1>Form</h1>
+  <div text-center *ngIf="loading">
+    <ion-spinner></ion-spinner>
+  </div>
+  <button ion-button (click)="reload()" *ngIf="errorLoading">
+    Reload
+  </button>
+  <form [formGroup]="form" (submit)="onSubmit()">
+    <ion-item>
+      <ion-label>Name</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Birthday</ion-label>
+      <ion-datetime formControlName="birthDate"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Sexo</ion-label>
+      <ion-select formControlName="sex">
+        <ion-option value="male">Male</ion-option>
+        <ion-option value="female">Female</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Telephone</ion-label>
+      <ion-input type="number" formControlName="phone"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+    <div margin-vertical margin-bottom text-end>
+      <button ion-button [disabled]="!form.valid">
+        Submit
+      </button>
+    </div>
+  </form>
+
+</ion-content>
