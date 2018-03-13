@@ -22,6 +22,11 @@ export class RecommendationService{
   getRecommendations(): Observable<RecommendationItem[]> {
     return <Observable<RecommendationItem[]>> this.http.get('http://localhost:3000/recommendations');
   }
+
+    saveRecommendation(recommendation: RecommendationItem): Observable<RecommendationItem> {
+        return <Observable<RecommendationItem>>
+            this.http.put('http://localhost:3000/recommendations/' + recommendation.id, recommendation);
+    }
 /*
     getRecommendations(): Subject<RecommendationItem[]> {
         let recommendations = [

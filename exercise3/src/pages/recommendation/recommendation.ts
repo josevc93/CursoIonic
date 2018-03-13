@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {RecommendationItem, RecommendationService} from "../../services/recommendation";
 import {HttpErrorResponse} from "@angular/common/http";
+import {RecommendationDetailsPage} from "../recommendation-details/recommendation-details";
 
 
 @Component({
@@ -11,7 +12,6 @@ import {HttpErrorResponse} from "@angular/common/http";
 export class RecommendationPage implements OnInit{
     recommendations: RecommendationItem[];
     name: string;
-    selectedRecommendation: RecommendationItem;
     errorLoading: boolean;
     loading: boolean;
 
@@ -19,12 +19,8 @@ export class RecommendationPage implements OnInit{
     }
 
     ngOnInit(){
-        this.selectedRecommendation = this.navParams.get('recommendation');
-        this.name = this.navParams.get('name');
-        if (!this.name) {
-            this.name = "Recommendations List";
-            this.getRecommendations();
-        }
+        this.name = 'Recommendations List';
+        this.getRecommendations();
     }
 
   getRecommendations(){
@@ -42,7 +38,7 @@ export class RecommendationPage implements OnInit{
   }
 
     goToDetails(event, recommendation, name) {
-        this.navCtrl.push(RecommendationPage, {
+        this.navCtrl.push(RecommendationDetailsPage, {
             recommendation: recommendation,
             name: name
         });

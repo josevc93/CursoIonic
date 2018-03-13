@@ -6,25 +6,16 @@
  <!-- <p>{{ 'fruitCost' | translate: {price: 4} }}</p>
   <p>{{'usingPipe' | translate}}</p>
   <traslate [params]="{price: 4}">fruitCost</traslate> <!-- traducido -->
-  <!-- LISTA -->
     <div text-center *ngIf="loading">
         <ion-spinner></ion-spinner>
     </div>
     <div text-center>
-        <button ion-button icon-only color="secondary" (click)="getFruits()" *ngIf="errorLoading && !selectedFruit">Reload</button>
+        <button ion-button icon-only color="secondary" (click)="getFruits()" *ngIf="errorLoading">Reload</button>
     </div>
-  <ion-list *ngIf="!selectedFruit">
-    <button ion-item *ngFor="let fruit of fruits" (click)="goToDetails($event, fruit, fruit.name)">
+  <ion-list>
+    <ion-item *ngFor="let fruit of fruits" (click)="goToDetails($event, fruit, fruit.name)">
       <p class="negrita">{{fruit.name}}</p>
       <p>{{fruit.description | lenghtFormat: 40}}</p>
-    </button>
+    </ion-item>
   </ion-list>
-  <!-- DETALLE -->
-  <div *ngIf="selectedFruit" padding>
-    <p class="negrita">{{selectedFruit.name}}</p>
-    <img class="image" src="assets/imgs/fruits/{{selectedFruit.image}}">
-    <p>{{selectedFruit.description}}</p>
-    <p><a href="{{selectedFruit.link}}" target="_blank">More info</a></p>
-    <vote (hasVoted)="showAlert($event)"></vote>
-  </div>
 </ion-content>

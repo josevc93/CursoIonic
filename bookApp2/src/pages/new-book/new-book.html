@@ -1,0 +1,26 @@
+<ion-header>
+  <common-navbar [name]="name"></common-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="bookForm" (submit)="submitForm()">
+    <ion-item>
+      <ion-label>Title</ion-label>
+      <ion-input type="text" formControlName="title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Language</ion-label>
+      <ion-input type="text" formControlName="language"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Edition</ion-label>
+      <ion-input type="text" formControlName="edition"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Publisher</ion-label>
+      <ion-input type="text" formControlName="publisher"></ion-input>
+    </ion-item>
+    <ion-spinner *ngIf="loading" margin-top></ion-spinner>
+    <button ion-button [disabled]="!bookForm.valid" margin-top *ngIf="!loading">Create</button>
+  </form>
+</ion-content>

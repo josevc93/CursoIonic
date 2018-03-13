@@ -1,0 +1,17 @@
+<ion-header>
+  <common-navbar [name]="name"></common-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div padding>
+    <p class="negrita">{{fruit.name}}</p>
+    <img class="image" src="assets/imgs/fruits/{{fruit.image}}">
+    <form [formGroup]="fruitForm" (submit)="submitForm()">
+      <ion-input type="text" formControlName="description">{{fruit.description}}</ion-input>
+      <ion-spinner *ngIf="updating"></ion-spinner>
+      <button *ngIf="!updating" ion-button [disabled]="!fruitForm.valid">Update description</button>
+    </form>
+    <p><a href="{{fruit.link}}" target="_blank">More info</a></p>
+    <vote (hasVoted)="showAlert($event)"></vote>
+  </div>
+</ion-content>

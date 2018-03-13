@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AlertController, NavController, NavParams} from 'ionic-angular';
 import {FruitItems, FruitService} from "../../services/fruit";
 import {HttpErrorResponse} from "@angular/common/http";
-
+import {FruitDetailsPage} from "../fruit-details/fruit-details";
 
 @Component({
   selector: 'page-fruit',
@@ -10,12 +10,9 @@ import {HttpErrorResponse} from "@angular/common/http";
 })
 export class FruitPage implements OnInit{
   fruits: FruitItems[];
-  name: string;
-  selectedFruit: FruitItems;
   errorLoading: boolean;
   loading: boolean;
-  likeVote: number;
-  dislikeVote: number;
+  name: string;
 
 
   constructor(public navCtrl: NavController,
@@ -25,15 +22,8 @@ export class FruitPage implements OnInit{
   }
 
   ngOnInit(){
-      this.selectedFruit = this.navParams.get('fruit');
-      this.name = this.navParams.get('name');
-      this.likeVote = 0;
-      this.dislikeVote = 0;
-
-      if (!this.name) {
-          this.name = "Fruits List";
-          this.getFruits();
-      }
+      this.name = "Fruits List";
+      this.getFruits();
   }
 
   getFruits() {
@@ -51,18 +41,10 @@ export class FruitPage implements OnInit{
   }
 
     goToDetails(event, fruit, name) {
-        this.navCtrl.push(FruitPage, {
+        this.navCtrl.push(FruitDetailsPage, {
             fruit: fruit,
             name: name
         });
     }
 
-    showAlert(text: Event){
-      let alert = this.alertCtrl.create({
-        title: this.selectedFruit.name,
-        subTitle: 'Has votado ' + text + '.',
-        buttons: ['Dismiss']
-      });
-      alert.present();
-    }
 }

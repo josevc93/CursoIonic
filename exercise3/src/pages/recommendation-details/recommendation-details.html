@@ -1,0 +1,16 @@
+<ion-header>
+  <common-navbar [name]="name"></common-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div padding>
+    <form [formGroup]="recommendationForm" (submit)="submitForm()">
+      <ion-input type="text" formControlName="title" class="negrita">{{recommendation.title}}</ion-input>
+      <ion-input type="text" formControlName="content">{{recommendation.content}}</ion-input>
+      <ion-input type="text" formControlName="author" class="cursiva">{{recommendation.author}}</ion-input>
+      <ion-spinner *ngIf="updating"></ion-spinner>
+      <button *ngIf="!updating" ion-button [disabled]="!recommendationForm.valid">Update recommendation</button>
+    </form>
+    <vote></vote>
+  </div>
+</ion-content>

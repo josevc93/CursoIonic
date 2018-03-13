@@ -125,6 +125,13 @@
   ],
   "books": [
     {
+      "id": 1,
+      "title": "Head First Java",
+      "language": "Java",
+      "edition": "third",
+      "publisher": "O'Reilly"
+    },
+    {
       "id": 2,
       "title": "Head First Design Pattern",
       "language": "Java",

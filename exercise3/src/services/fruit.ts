@@ -22,6 +22,11 @@ export class FruitService {
     getFruits(): Observable<FruitItems[]> {
       return <Observable<FruitItems[]>> this.http.get('http://localhost:3000/fruits');
     }
+
+    saveFruit(fruit: FruitItems): Observable<FruitItems> {
+        return <Observable<FruitItems>>
+            this.http.put('http://localhost:3000/fruits/' + fruit.id, fruit);
+    }
 /*
     getFruits(): Subject<FruitItems[]> {
         let fruits = [

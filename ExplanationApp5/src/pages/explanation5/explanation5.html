@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Day 3 / Explanation 5
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div text-center padding [hidden]="!isLoading">
+    <ion-spinner></ion-spinner>
+  </div>
+  <div [hidden]="isLoading">
+    <form [formGroup]="form" (submit)="submitForm()">
+      <ion-item>
+        <ion-label>Name</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Birthdate</ion-label>
+        <ion-datetime formControlName="birthDate"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Sex</ion-label>
+        <ion-select formControlName="sex">
+          <ion-option value="male">Male</ion-option>
+          <ion-option value="female">Female</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Phone</ion-label>
+        <ion-input type="number" formControlName="phone"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Email</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <div margin-top text-end>
+        <button ion-button [disabled]="!form.valid">Save</button>
+      </div>
+    </form>
+  </div>
+</ion-content>

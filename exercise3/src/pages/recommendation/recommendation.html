@@ -3,7 +3,6 @@
 </ion-header>
 
 <ion-content padding>
-  <!-- LISTA -->
   <div text-center *ngIf="loading">
     <ion-spinner></ion-spinner>
   </div>
@@ -12,17 +11,10 @@
       Reload
     </button>
   </div>
-  <ion-list *ngIf="!selectedRecommendation">
-    <button ion-item *ngFor="let recommendation of recommendations" (click)="goToDetails($event, recommendation, recommendation.title)">
+  <ion-list>
+    <ion-item *ngFor="let recommendation of recommendations" (click)="goToDetails($event, recommendation, recommendation.title)">
       <p class="negrita">{{recommendation.title}}</p>
       <p>{{recommendation.content | lenghtFormat: 50}}</p>
-    </button>
+    </ion-item>
   </ion-list>
-  <!-- DETALLE -->
-  <div *ngIf="selectedRecommendation" padding>
-    <p class="negrita">{{selectedRecommendation.title}}</p>
-    <p>{{selectedRecommendation.content}}</p>
-    <p class="cursiva">{{selectedRecommendation.author}}</p>
-    <vote></vote>
-  </div>
 </ion-content>
